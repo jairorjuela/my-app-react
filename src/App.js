@@ -3,8 +3,16 @@ import './App.css';
 
 class App extends Component {
   render() {
+    const names = ["Jairo", "Andres", "Orjuela", "Hower"];
     return (
-        <h1>Mi primera aplicación</h1>
+      <div>
+        <h1>Hola Mundo</h1>
+        <ul>
+          {names.map(name =>
+            <li>{name}</li>
+          )}
+        </ul>
+      </div>        
     );
   }
 }
