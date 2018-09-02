@@ -6,8 +6,12 @@ class App extends Component {
   constructor() {
     super();
 
+    // this.state = {
+    //   title: "Hola mundo desde estado"
+    // }
+
     this.state = {
-      title: "Hola mundo desde estado"
+      tasks: ["tarea1", "tarea2"]
     }
   }
   render() {
@@ -19,17 +23,44 @@ class App extends Component {
       // )}
       // </div>
       <div>
-        <h1>{this.state.title}</h1>
-        <button onClick={this.changeTitle.bind(this)}>Cambia el titulo</button>
+        <h1>Hola Mundo</h1>
+        <ul>
+          {this.state.tasks.map(task =>
+            <li>{task}</li>
+          )}
+        </ul>
+
+        <button onClick={this.addTask.bind(this)}>Agrega elemento</button>
+        <button onClick={this.updateTask.bind(this)}>Modificar Tarea 2</button>
+
       </div>
     );
   }
 
-  changeTitle(){
+  // changeTitle(){
+  //   this.setState({
+  //     title: "Nuevo titulo"
+  //   });
+  // }
+
+  addTask(){
     this.setState({
-      title: "Nuevo titulo"
+      tasks: this.state.tasks.concat("Nuevo Elemento")
     });
   }
+
+  updateTask(){
+    const index = this.state.tasks.findIndex(task =>
+      task === "tarea2"
+    );
+
+    this.setState({
+      tasks: this.state.tasks.map((task, i) =>
+        i === index ? "Actualizada la tarea" : task
+      )
+    });
+  }
+
 }
 
 export default App;
