@@ -6,6 +6,7 @@
     "axios": "^0.18.0",
     "npm": "^6.4.1",
     "react": "^16.2.0",
+    "react-bootstrap": "^0.32.3",
     "react-dom": "^16.2.0",
     "react-scripts": "1.1.1",
     "to": "^0.2.9",
