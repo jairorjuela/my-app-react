@@ -3,63 +3,48 @@ import Welcome from './Welcome';
 import './App.css';
 
 class App extends Component {
-  constructor() {
+  constructor(){
     super();
-
-    // this.state = {
-    //   title: "Hola mundo desde estado"
-    // }
-
     this.state = {
-      tasks: ["tarea1", "tarea2"]
+      name: "",
+      terms: false
     }
   }
   render() {
-    // const names = ["Jairo", "Andres", "Orjuela", "Hower"];
     return (
-      // <div>
-      // {names.map(name =>
-      //   <Welcome name= {name}/>
-      // )}
-      // </div>
       <div>
         <h1>Hola Mundo</h1>
-        <ul>
-          {this.state.tasks.map(task =>
-            <li>{task}</li>
-          )}
-        </ul>
-
-        <button onClick={this.addTask.bind(this)}>Agrega elemento</button>
-        <button onClick={this.updateTask.bind(this)}>Modificar Tarea 2</button>
-
+        <input type="text" value={this.state.name} onChange={this.updateName.bind(this)} />
+        <div>
+          <label>
+            <input type="checkbox" checked={this.state.terms} onClick={this.updateTerms.bind(this)} /> Acepto los terminos
+          </label>
+        </div>
+        <button onClick={this.sayHi.bind(this)}>Say Hi!</button>
       </div>
     );
   }
 
-  // changeTitle(){
-  //   this.setState({
-  //     title: "Nuevo titulo"
-  //   });
-  // }
-
-  addTask(){
+  updateName(event){
     this.setState({
-      tasks: this.state.tasks.concat("Nuevo Elemento")
+      name: event.target.value
     });
   }
 
-  updateTask(){
-    const index = this.state.tasks.findIndex(task =>
-      task === "tarea2"
-    );
-
+  updateTerms(event){
     this.setState({
-      tasks: this.state.tasks.map((task, i) =>
-        i === index ? "Actualizada la tarea" : task
-      )
+      terms: event.target.checked
     });
   }
+
+  sayHi(){
+    if(this.state.terms){
+      alert('Hola ' + this.state.name);
+    }else {
+      alert('Acepta terminos')
+    }
+  }
+
 
 }
 
